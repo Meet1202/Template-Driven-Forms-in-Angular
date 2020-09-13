@@ -1,0 +1,15 @@
+<div class="container">
+  <h2 class="text-center">Template Driven Form</h2>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-group">  
+    <div ngModelGroup="name" #nameCtrl="ngModelGroup" >
+      <input name="first" placeholder="firstname" [(ngModel)]="name.first" minlength="2" class="form-control mb-2">
+      <input name="last" placeholder="lastname" [(ngModel)]="name.last" required class="form-control mb-2">
+    </div>
+    
+    <input name="email" placeholder="email" [(ngModel)]="email" class="form-control mb-2"> 
+    <button class="btn btn-primary mr-2" [disabled]='name.first === "" || name.last === ""'>Submit</button>
+    <button (click)="setValue()" class="btn btn-primary">Set value</button>
+  </form>
+  {{name | json}}, {{email}}
+</div>
+<router-outlet></router-outlet>
